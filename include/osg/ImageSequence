@@ -84,7 +84,7 @@ class OSG_EXPORT ImageSequence : public ImageStream
         void setLength(double length);
         virtual double getLength() const { return _length; }
 
-
+        // delay load
         void addImageFile(const std::string& fileName);
 
         void setImageFile(unsigned int pos, const std::string& fileName);

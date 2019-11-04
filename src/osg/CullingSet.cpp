@@ -64,6 +64,7 @@ void CullingSet::popOccludersCurrentMask(NodePath& nodePath)
     }
 }
 
+// TODO  crack this.
 osg::Vec4 CullingSet::computePixelSizeVector(const Viewport& W, const Matrix& P, const Matrix& M)
 {
     // pre adjust P00,P20,P23,P33 by multiplying them by the viewport window matrix.

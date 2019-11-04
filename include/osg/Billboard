@@ -28,9 +28,9 @@ class OSG_EXPORT Billboard : public Geode
     public:
 
         enum Mode {
-            POINT_ROT_EYE,
-            POINT_ROT_WORLD,
-            AXIAL_ROT
+            POINT_ROT_EYE,    // look at camera, use camera up as up in lookat
+            POINT_ROT_WORLD,  // rotate normal to centerTOeye, don't care about orientation
+            AXIAL_ROT         // restrict rotate around certain local axis
         };
 
         Billboard();

@@ -41,8 +41,10 @@ osg::Group* createObjectCache()
     osg::ref_ptr<osgDB::Options> options3 = new osgDB::Options("b=7 a=6 c=8");
     options3->setObjectCacheHint(osgDB::Options::CACHE_ALL);
 
+    // store cache in global option
     osg::ref_ptr<osg::Node> node1 = osgDB::readRefNodeFile("cessna.osg");
     osg::ref_ptr<osg::Node> node2 = osgDB::readRefNodeFile("cessna.osg");
+    // store cache in non global option
     osg::ref_ptr<osg::Node> node3 = osgDB::readRefNodeFile("cessna.osg", options1.get());
     osg::ref_ptr<osg::Node> node4 = osgDB::readRefNodeFile("cessna.osg", options2.get());
     osg::ref_ptr<osg::Node> node5 = osgDB::readRefNodeFile("cessna.osg", options1.get());

@@ -38,6 +38,7 @@ using namespace osg;
 ///////////////////////////////////////////////////////////////////////////
 // in-line GLSL source code
 
+// TODO understand these two shaders
 static const char *blockyVertSource = {
     "// blocky.vert - an GLSL vertex shader with animation\n"
     "// the App updates uniforms \"slowly\" (eg once per frame) for animation.\n"

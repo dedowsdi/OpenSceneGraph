@@ -37,6 +37,9 @@ struct LessDepthSortFunctor
 };
 
 /** StateGraph - contained in a renderBin, defines the scene to be drawn.
+  * 
+  * When osg render a RenderLeaf,  assume rg is rendergraph of this leaf, osg
+  * moves current graph to parent of rg, apply rg.
   */
 class OSGUTIL_EXPORT StateGraph : public osg::Object
 {

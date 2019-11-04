@@ -26,6 +26,10 @@ class Matrixf;
 class Matrixd;
 
 /** A quaternion class. It can be used to represent an orientation in 3D space.*/
+// osg Quat works in the same way as osg Matrix, except that it post multiply vec4:
+//     q1 * q0 * v  // same as v * m1 * m0
+//                  // same as (v * m1) * m0
+//                  // same as q0 * (q1 * v), be very very careful about this!!!!
 class OSG_EXPORT Quat
 {
 

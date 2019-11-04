@@ -74,8 +74,8 @@ osg::StateSet* createSpotLightDecoratorState(unsigned int lightNum, unsigned int
 
     stateset->setMode(GL_LIGHT0+lightNum, osg::StateAttribute::ON);
 
-    osg::Vec4 centerColour(1.0f,1.0f,1.0f,1.0f);
-    osg::Vec4 ambientColour(0.05f,0.05f,0.05f,1.0f);
+    osg::Vec4 centerColour(1.0f,1.0f,1.0f,1.0f); // same as spot diffuse
+    osg::Vec4 ambientColour(0.05f,0.05f,0.05f,1.0f); // same as spot ambient
 
     // set up spot light texture
     osg::Texture2D* texture = new osg::Texture2D();
@@ -233,6 +233,7 @@ osg::Node* createMovingModel(const osg::Vec3& center, float radius)
     {
         const osg::BoundingSphere& bs = cessna->getBound();
 
+        // adjust object local orientation, scale, move center to origin
         float size = radius/bs.radius()*0.3f;
         osg::MatrixTransform* positioned = new osg::MatrixTransform;
         positioned->setDataVariance(osg::Object::STATIC);

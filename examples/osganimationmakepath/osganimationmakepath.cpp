@@ -92,7 +92,7 @@
       unsigned int _lastUpdate;
   };
 
-
+// Use UpdateMaterial instead
 class AnimtkStateSetUpdateCallback : public osg::StateSet::Callback
 {
 public:
@@ -128,6 +128,7 @@ public:
             _lastUpdate = nv->getFrameStamp()->getFrameNumber();
             _currentTime = osg::Timer::instance()->tick();
 
+            // why not use an Animation?
             if (_playing && _sampler.get() && _sampler->getKeyframeContainer())
             {
                 osg::Material* material = dynamic_cast<osg::Material*>(state->getAttribute(osg::StateAttribute::MATERIAL));
@@ -152,7 +153,7 @@ public:
     osg::Timer_t _startTime;
     osg::Timer_t _currentTime;
     bool _playing;
-    unsigned int _lastUpdate;
+    unsigned int _lastUpdate; // last update frame number
 };
 
 // This won't really give good results in any situation, but it does demonstrate
@@ -181,7 +182,7 @@ public:
             _sampler->getValueAt(t, pos);
 
             _geode->addDrawable(new osg::ShapeDrawable(new osg::Sphere(pos, 0.5f)));
-            _geode->dirtyBound();
+            // _geode->dirtyBound(); // redundent
 
             _lastAdd += _addSeconds;
         }

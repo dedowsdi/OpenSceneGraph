@@ -180,9 +180,9 @@ osg::Node* createMirroredScene(osg::Node* model)
 
     }
 
-    // bin one - draw scene without mirror or reflection, unset
+    // bin2 - draw scene without mirror or reflection, unset
     // stencil values where scene is infront of mirror and hence
-    // occludes the mirror.
+    // occludes the mirror. The stencil is depth tested now.
     {
         osg::Stencil* stencil = new osg::Stencil;
         stencil->setFunction(osg::Stencil::ALWAYS,0,~0u);
@@ -201,6 +201,7 @@ osg::Node* createMirroredScene(osg::Node* model)
     }
 
     // bin3  - set up the depth to the furthest depth value
+    //         Clear mirror depth, so it won't block reflections.
     {
 
         // set up the stencil ops so that only operator on this mirrors stencil value.
@@ -285,7 +286,8 @@ osg::Node* createMirroredScene(osg::Node* model)
     // bin5  - draw the textured mirror and blend it with the reflection.
     {
 
-        // set up depth so all writing to depth goes to maximum depth.
+        // write final mirror depth, current stencil is already depth tested, so
+        // you can use ALWAYS instead of LESS
         osg::Depth* depth = new osg::Depth;
         depth->setFunction(osg::Depth::ALWAYS);
 

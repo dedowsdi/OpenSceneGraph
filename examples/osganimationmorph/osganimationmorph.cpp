@@ -74,11 +74,12 @@ int main (int argc, char* argv[])
     channel0->getOrCreateSampler()->getOrCreateKeyframeContainer()->push_back(osgAnimation::FloatKeyframe(0,0.0));
     channel0->getOrCreateSampler()->getOrCreateKeyframeContainer()->push_back(osgAnimation::FloatKeyframe(1,1.0));
     channel0->setTargetName("MorphNodeCallback");
+    // channel name will be used as weight index
     channel0->setName("0");
 
     animation->addChannel(channel0);
     animation->setName("Morph");
-    animation->computeDuration();
+    animation->computeDuration(); // redundent?
     animation->setPlayMode(osgAnimation::Animation::PPONG);
     osgAnimation::BasicAnimationManager* bam = new osgAnimation::BasicAnimationManager;
     bam->registerAnimation(animation);

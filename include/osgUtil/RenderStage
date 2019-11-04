@@ -312,6 +312,7 @@ protected:
 
         mutable osg::Matrix                         _inheritedPositionalStateContainerMatrix;
         mutable osg::ref_ptr<PositionalStateContainer>   _inheritedPositionalStateContainer;
+        // all position attribute stores in _renderStageLighting
         mutable osg::ref_ptr<PositionalStateContainer>   _renderStageLighting;
 
 

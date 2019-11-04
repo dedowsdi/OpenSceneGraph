@@ -21,6 +21,7 @@ namespace osgUtil
 
 /** Concrete class for implementing line intersections with the scene graph.
   * To be used in conjunction with IntersectionVisitor. */
+// doesn't work with vertex attribute array.
 class OSGUTIL_EXPORT LineSegmentIntersector : public Intersector
 {
     public:
@@ -52,7 +53,7 @@ class OSGUTIL_EXPORT LineSegmentIntersector : public Intersector
             double                          ratio;
             osg::NodePath                   nodePath;
             osg::ref_ptr<osg::Drawable>     drawable;
-            osg::ref_ptr<osg::RefMatrix>    matrix;
+            osg::ref_ptr<osg::RefMatrix>    matrix; // model matrix
             osg::Vec3d                      localIntersectionPoint;
             osg::Vec3                       localIntersectionNormal;
             IndexList                       indexList;

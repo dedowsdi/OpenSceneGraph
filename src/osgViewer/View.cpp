@@ -531,6 +531,7 @@ bool DepthPartitionSettings::getDepthRange(osg::View& view, unsigned int partiti
             osg::Vec3d lookVectorInWorldCoords = osg::Matrixd::transform3x3(viewMatrix,osg::Vec3d(0.0,0.0,-1.0));
             lookVectorInWorldCoords.normalize();
 
+            // assume look at world center ?
             osg::Vec3d nearPointInWorldCoords = bs.center() - lookVectorInWorldCoords*bs.radius();
             osg::Vec3d farPointInWorldCoords = bs.center() + lookVectorInWorldCoords*bs.radius();
 

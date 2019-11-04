@@ -30,6 +30,7 @@ public:
             i * 2
         );
 
+        // biggest layer appear on top of others?
         _windows->getByName(ev.getWidget()->getName())->setLayer(
             osgWidget::Widget::LAYER_MIDDLE,
             objs.size() * 2
@@ -75,7 +76,7 @@ public:
                 << "And this should go to the next Window!" << std::endl
             ;
 
-            osgWidget::Label* label2 = new osgWidget::Label(ss.str());
+            osgWidget::Label* label2 = new osgWidget::Label();
 
             label2->setFont("fonts/Vera.ttf");
             label2->setFontSize(15);
@@ -106,6 +107,7 @@ public:
         label->setCanFill(true);
 
         addWidget(label);
+        // embed window won't receive drag event?
         addWidget(_tabs->embed());
         addWidget(_windows->embed());
     }

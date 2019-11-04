@@ -8,6 +8,7 @@ doc/OpenSceneGraphReferenceDocs/
 doc/OpenThreadsReferenceDocs/
 
 cmake_uninstall.cmake
+compile_commands.json
 
 include/OpenThreads/Config
 include/OpenThreads/Version

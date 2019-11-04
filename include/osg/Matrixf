@@ -23,6 +23,7 @@ namespace osg {
 
 class Matrixf;
 
+// row major
 class OSG_EXPORT Matrixf
 {
     public:
@@ -315,6 +316,7 @@ class OSG_EXPORT Matrixf
                                      const Vec3d& center,
                                      const Vec3d& up);
 
+        // always assume w is 1 for Vec3*
         inline Vec3f preMult( const Vec3f& v ) const;
         inline Vec3d preMult( const Vec3d& v ) const;
         inline Vec3f postMult( const Vec3f& v ) const;

@@ -57,7 +57,10 @@ struct OSGVIEWER_EXPORT DepthPartitionSettings : public osg::Referenced
     enum DepthMode
     {
         FIXED_RANGE,
-        BOUNDING_VOLUME
+        BOUNDING_VOLUME // assume look at world center, draw a line along camera
+                        // -z, it passes world center, intersects bounding sphere with 2 points,
+                        // use this z of them as _zNear, _zFar,
+                        // zMid = sqrt(_zNear * _zFar)
     };
 
     DepthPartitionSettings(DepthMode mode=BOUNDING_VOLUME);

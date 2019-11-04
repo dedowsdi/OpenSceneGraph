@@ -1396,7 +1396,7 @@ void RenderStage::drawImplementation(osg::RenderInfo& renderInfo,RenderLeaf*& pr
         _inheritedPositionalStateContainer->draw(state, previous, &_inheritedPositionalStateContainerMatrix);
     }
 
-    // apply the positional state.
+    // apply the positional state. set them to global default.
     if (_renderStageLighting.valid())
     {
         _renderStageLighting->draw(state, previous, 0);

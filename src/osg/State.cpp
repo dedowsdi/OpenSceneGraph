@@ -514,6 +514,8 @@ void State::reset()
     {
         ModeStack& ms = mitr->second;
         ms.valueVec.clear();
+        // next apply will use ms.global_default_value, last_applied_value must
+        // be different from it to force a reset?
         ms.last_applied_value = !ms.global_default_value;
         ms.changed = true;
     }

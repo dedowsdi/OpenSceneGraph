@@ -170,7 +170,7 @@ bool Billboard::computeMatrix(Matrix& modelview, const Vec3& eye_local, const Ve
                 //mat.makeRotate(inRadians(rotation_z),0.0f,0.0f,1.0f);
                 float inv = 1.0f/ev_length;
                 float s = ev.x()*inv;
-                float c = -ev.y()*inv;
+                float c = -ev.y()*inv; //rotate -y to proj of ev, that's why - is needed
                 matrix(0,0) = c;
                 matrix(1,0) = -s;
                 matrix(0,1) = s;
@@ -187,7 +187,7 @@ bool Billboard::computeMatrix(Matrix& modelview, const Vec3& eye_local, const Ve
                 //float rotation_zrotation_z = atan2f(ev.x(),ev.y());
                 //mat.makeRotate(inRadians(rotation_z),0.0f,0.0f,1.0f);
                 float inv = 1.0f/ev_length;
-                float s = -ev.z()*inv;
+                float s = -ev.z()*inv; // rotate -x to  proj of ev on xz
                 float c = ev.x()*inv;
                 matrix(0,0) = c;
                 matrix(2,0) = s;
@@ -206,7 +206,7 @@ bool Billboard::computeMatrix(Matrix& modelview, const Vec3& eye_local, const Ve
                 //float rotation_zrotation_z = atan2f(ev.x(),ev.y());
                 //mat.makeRotate(inRadians(rotation_z),0.0f,0.0f,1.0f);
                 float inv = 1.0f/ev_length;
-                float s = -ev.z()*inv;
+                float s = -ev.z()*inv; // rotate -y to prj of ev on xy
                 float c = -ev.y()*inv;
                 matrix(1,1) = c;
                 matrix(2,1) = -s;

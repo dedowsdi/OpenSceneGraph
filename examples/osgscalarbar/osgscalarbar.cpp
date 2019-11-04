@@ -35,6 +35,7 @@
 #include <osgSim/ScalarsToColors>
 #include <osgSim/ColorRange>
 #include <osgSim/ScalarBar>
+#include <osg/CullFace>
 
 #include <sstream>
 #include <iostream>
@@ -84,9 +85,9 @@ osg::Node* createScalarBar(bool vertical)
     std::vector<osg::Vec4> cs;
     cs.push_back(osg::Vec4(1.0f,0.0f,0.0f,1.0f));   // R
     cs.push_back(osg::Vec4(0.0f,1.0f,0.0f,1.0f));   // G
-    cs.push_back(osg::Vec4(1.0f,1.0f,0.0f,1.0f));   // G
+    cs.push_back(osg::Vec4(1.0f,1.0f,0.0f,1.0f));   // Y
     cs.push_back(osg::Vec4(0.0f,0.0f,1.0f,1.0f));   // B
-    cs.push_back(osg::Vec4(0.0f,1.0f,1.0f,1.0f));   // R
+    cs.push_back(osg::Vec4(0.0f,1.0f,1.0f,1.0f));   // C
 
 
     ColorRange* cr = new ColorRange(0.0f,1.0f,cs);
@@ -128,13 +129,17 @@ osg::Node * createScalarBar_HUD()
 
     osg::MatrixTransform * modelview = new osg::MatrixTransform;
     modelview->setReferenceFrame(osg::Transform::ABSOLUTE_RF);
-    osg::Matrixd matrix(osg::Matrixd::scale(1000,1000,1000) * osg::Matrixd::translate(120,10,0)); // I've played with these values a lot and it seems to work, but I have no idea why
+    osg::Matrixd matrix(osg::Matrixd::scale(1000,1000,1) * osg::Matrixd::translate(120,10,0)); // I've played with these values a lot and it seems to work, but I have no idea why
     modelview->setMatrix(matrix);
     modelview->addChild(geode);
 
     osg::Projection * projection = new osg::Projection;
     projection->setMatrix(osg::Matrix::ortho2D(0,1280,0,1024)); // or whatever the OSG window res is
     projection->addChild(modelview);
+
+    // for whatever reason, scalarbar is created in cw order
+    // auto ss = geode->getOrCreateStateSet();
+    // ss->setAttributeAndModes(new osg::CullFace(osg::CullFace::BACK));
 
     return projection; //make sure you delete the return sb line
 }

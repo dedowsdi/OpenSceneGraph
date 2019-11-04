@@ -131,6 +131,7 @@ public:
         traverse(plod);
     }
 
+    // convert lod to pagedlod
     void convert()
     {
         unsigned int lodNum = 0;
@@ -156,6 +157,7 @@ public:
 
             osg::PagedLOD* plod = new osg::PagedLOD;
 
+            // collect <range, pos> in a multimap ?
             const osg::LOD::RangeList& originalRangeList = lod->getRangeList();
             typedef std::multimap< osg::LOD::MinMaxPair , unsigned int > MinMaxPairMap;
             MinMaxPairMap rangeMap;
@@ -167,6 +169,8 @@ public:
                 rangeMap.insert(std::multimap< osg::LOD::MinMaxPair , unsigned int >::value_type(*ritr, pos));
             }
 
+            // add child to plod in reverse order ? This loop and the above one
+            // looks suspicious, why not add to plod directly in a reverse loop?
             pos = 0;
             for(MinMaxPairMap::reverse_iterator mitr = rangeMap.rbegin();
                 mitr != rangeMap.rend();
@@ -194,6 +198,7 @@ public:
                 (*pitr)->replaceChild(lod.get(),plod);
             }
 
+            // is this necessary ?
             plod->setCenter(plod->getBound().center());
 
 

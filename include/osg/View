@@ -54,8 +54,8 @@ class OSG_EXPORT View : public virtual osg::Object
         enum LightingMode
         {
             NO_LIGHT,
-            HEADLIGHT,
-            SKY_LIGHT
+            HEADLIGHT, // directional light, position(0, 0, 1, 0) in view space
+            SKY_LIGHT  // directional light, position(0, 0, 1, 0) in world space
         };
 
         /** Set the global lighting to use for this view.

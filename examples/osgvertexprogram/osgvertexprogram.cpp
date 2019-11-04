@@ -43,12 +43,14 @@
 #include <osgViewer/Viewer>
 
 #include <iostream>
+#include <osg/io_utils>
 
 
 float refract = 1.02;          // ratio of indices of refraction
 float fresnel = 0.2;           // Fresnel multiplier
 
 
+// really really old , don't want to read it.
 const char vpstr[] =
     "!!ARBvp1.0 # Refraction                                    \n"
     "                                                           \n"
@@ -198,6 +200,7 @@ public:
         osgUtil::CullVisitor* cv = dynamic_cast<osgUtil::CullVisitor*>(nv);
         if (cv)
         {
+            // rotate cube is the same as rotate texcoord in reverse
             const osg::Matrix& MV = *(cv->getModelViewMatrix());
             const osg::Matrix R = osg::Matrix::rotate( osg::DegreesToRadians(112.0f), 0.0f,0.0f,1.0f)*
                                   osg::Matrix::rotate( osg::DegreesToRadians(90.0f), 1.0f,0.0f,0.0f);
@@ -225,6 +228,7 @@ public:
         if (cv)
         {
             osg::Vec3 eyePointLocal = cv->getEyeLocal();
+            // move skybox to camera
             matrix.preMultTranslate(eyePointLocal);
         }
         return true;
@@ -254,6 +258,7 @@ osg::Node* createSkyBox()
     stateset->setTextureAttributeAndModes(0, te, osg::StateAttribute::ON);
 
     osg::TexGen *tg = new osg::TexGen;
+    // why use normal map for skybox?
     tg->setMode(osg::TexGen::NORMAL_MAP);
     stateset->setTextureAttributeAndModes(0, tg, osg::StateAttribute::ON);
 
@@ -269,10 +274,13 @@ osg::Node* createSkyBox()
     // clear the depth to the far plane.
     osg::Depth* depth = new osg::Depth;
     depth->setFunction(osg::Depth::ALWAYS);
+    // set depth range to far plane, so the depth test always fail if there are
+    // already something there
     depth->setRange(1.0,1.0);
     stateset->setAttributeAndModes(depth, osg::StateAttribute::ON );
 
-    stateset->setRenderBinDetails(-1,"RenderBin");
+    // render at first
+    stateset->setRenderBinDetails(5,"RenderBin");
 
     osg::Drawable* drawable = new osg::ShapeDrawable(new osg::Sphere(osg::Vec3(0.0f,0.0f,0.0f),1));
 
@@ -287,7 +295,10 @@ osg::Node* createSkyBox()
     transform->addChild(geode);
 
     osg::ClearNode* clearNode = new osg::ClearNode;
-//  clearNode->setRequiresClear(false);
+    clearNode->setRequiresClear(false);
+    // This skybox use NORMAL_MAP texgen, normal in view space doesn't rotate
+    // with camera, you must apply text mat to rotate it, why not just object
+    // plane ?
     clearNode->setCullCallback(new TexMatCallback(*tm));
     clearNode->addChild(transform);
 
@@ -305,6 +316,7 @@ osg::Node* addRefractStateSet(osg::Node* node)
     stateset->setTextureAttributeAndModes( 0, reflectmap, osg::StateAttribute::ON | osg::StateAttribute::OVERRIDE );
     stateset->setTextureAttributeAndModes( 1, reflectmap, osg::StateAttribute::ON | osg::StateAttribute::OVERRIDE );
 
+    // use object plane to setup reflection, why not use normal here?
     osg::TexMat* texMat = new osg::TexMat;
     stateset->setTextureAttribute(0, texMat);
 

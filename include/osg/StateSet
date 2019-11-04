@@ -109,9 +109,8 @@ class OSG_EXPORT StateSet : public Object
         void clear();
 
         /** Merge this \c StateSet with the \c StateSet passed as parameter.
-          * Every mode and attribute in this \c StateSet that is marked with
-          * \c StateAttribute::OVERRIDE is replaced with the
-          * equivalent mode or attribute from \c rhs.
+          * Take the rhs mode and attribute unless the lhs is override and the
+          * rhs is not protected
         */
         void merge(const StateSet& rhs);
 
@@ -403,9 +402,9 @@ class OSG_EXPORT StateSet : public Object
 
         enum RenderingHint
         {
-            DEFAULT_BIN = 0,
-            OPAQUE_BIN = 1,
-            TRANSPARENT_BIN = 2
+            DEFAULT_BIN = 0, // inherit, default to 0 ?
+            OPAQUE_BIN = 1, // use, bin 0
+            TRANSPARENT_BIN = 2 // use, bin 10
         };
 
         /** Set the \c RenderingHint of this \c StateSet. \c RenderingHint is
@@ -426,10 +425,10 @@ class OSG_EXPORT StateSet : public Object
 
         enum RenderBinMode
         {
-            INHERIT_RENDERBIN_DETAILS   =0,
-            USE_RENDERBIN_DETAILS       =1,
-            OVERRIDE_RENDERBIN_DETAILS  =2,
-            PROTECTED_RENDERBIN_DETAILS =4,
+            INHERIT_RENDERBIN_DETAILS   =0, // default
+            USE_RENDERBIN_DETAILS       =1, // customize
+            OVERRIDE_RENDERBIN_DETAILS  =2, // override children
+            PROTECTED_RENDERBIN_DETAILS =4, // protected from parent
             OVERRIDE_PROTECTED_RENDERBIN_DETAILS = OVERRIDE_RENDERBIN_DETAILS|PROTECTED_RENDERBIN_DETAILS
         };
 

@@ -439,8 +439,9 @@ void RenderBin::drawImplementation(osg::RenderInfo& renderInfo,RenderLeaf*& prev
     // OSG_NOTICE<<"begin RenderBin::drawImplementation "<<className()<<" sortMode "<<getSortMode()<<std::endl;
 
 
+    // insert current stateset before previous stategraph
     unsigned int numToPop = (previous ? StateGraph::numToPop(previous->_parent) : 0);
-    if (numToPop>1) --numToPop;
+    if (numToPop>1) --numToPop; // why -- ? are there common root graph?
     unsigned int insertStateSetPosition = state.getStateSetStackSize() - numToPop;
 
     if (_stateset.valid())
@@ -449,7 +450,7 @@ void RenderBin::drawImplementation(osg::RenderInfo& renderInfo,RenderLeaf*& prev
     }
 
 
-    // draw first set of draw bins.
+    // draw first set of draw bins. bin < 0
     RenderBinList::iterator rbitr;
     for(rbitr = _bins.begin();
         rbitr!=_bins.end() && rbitr->first<0;

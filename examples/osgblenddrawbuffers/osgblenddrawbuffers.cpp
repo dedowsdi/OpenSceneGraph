@@ -149,6 +149,12 @@ int main( int argc, char **argv )
     root->addChild( mrtCam );
     root->addChild( hudCam );
 
+    // Enablei and Disablei are special, they have only one state, it's always
+    // enable for enablei, disable for disablei, that's a problem.
+    // When State apply a new attribute, it call use it's cloneType() as global
+    // default attribute.
+    root->getOrCreateStateSet()->setAttribute( new osg::Disablei(GL_BLEND, 0) );
+
     osgViewer::Viewer viewer;
     viewer.setSceneData( root.get() );
     return viewer.run();

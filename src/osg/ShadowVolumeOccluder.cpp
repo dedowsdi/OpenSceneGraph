@@ -174,6 +174,7 @@ float computePolytopeVolume(const PointList& front, const PointList& back)
     return volume;
 }
 
+// TODO understand this
 bool ShadowVolumeOccluder::computeOccluder(const NodePath& nodePath,const ConvexPlanarOccluder& occluder,CullStack& cullStack,bool /*createDrawables*/)
 {
 

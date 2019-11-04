@@ -1,0 +1,143 @@
+snippet gl4Main
+#include "app.h"
+
+#include <sstream>
+
+namespace zxd {
+
+const GLint width = 800;
+const GLint height = 800;
+
+class ${2:program_name} : public program
+{
+public:
+
+protected:
+
+	void attach_shaders()
+	{
+		attach(GL_VERTEX_SHADER, "data/shader/purple_rain.vs.glsl");
+		attach(GL_FRAGMENT_SHADER, "data/shader/purple_rain.fs.glsl");
+	}
+
+	void bind_uniform_locations()
+	{
+	}
+
+	void bind_attrib_locations()
+	{
+	}
+
+} prg;
+
+class ${1:app_name} : public app {
+private:
+
+public:
+	void init_info() override;
+	void create_scene() override;
+
+	void update() override;
+
+	void display() override;
+
+	void glfw_resize(GLFWwindow *wnd, int w, int h) override;
+
+	void glfw_key(
+		GLFWwindow *wnd, int key, int scancode, int action, int mods) override;
+	void glfw_mouse_button(GLFWwindow *wnd, int button, int action,
+		int mods) override;
+
+	void glfw_mouse_move(GLFWwindow *wnd, double x, double y) override;
+};
+
+void $1::init_info() {
+	app::init_info();
+	m_info.title = "$1";
+	m_info.wnd_width = width;
+	m_info.wnd_height = height;
+}
+
+void $1::create_scene() {
+	prg.init();
+}
+
+void $1::update() {}
+
+void $1::display() {
+	glClear(GL_COLOR_BUFFER_BIT);
+
+	prg.use();
+
+	if(!m_display_help)
+		return;
+
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	std::stringstream ss;
+	ss << "";
+	m_text.print(ss.str(), 10, m_info.wnd_height - 20);
+	glDisable(GL_BLEND);
+}
+
+void $1::glfw_resize(GLFWwindow *wnd, int w, int h) {
+	app::glfw_resize(wnd, w, h);
+}
+
+void $1::glfw_key(
+	GLFWwindow *wnd, int key, int scancode, int action, int mods) {
+	if (action == GLFW_PRESS) {
+		switch (key) {
+			default:
+				break;
+		}
+	}
+	app::glfw_key(wnd, key, scancode, action, mods);
+}
+
+void $1::glfw_mouse_button(GLFWwindow *wnd, int button, int action,
+                               int mods)
+{
+  app::glfw_mouse_button(wnd, button, action, mods);
+}
+
+void $1::glfw_mouse_move(GLFWwindow *wnd, double x, double y)
+{
+  app::glfw_mouse_move(wnd, x, y);
+}
+
+}
+
+int main(int argc, char *argv[]) {
+	zxd::$1 app;
+	app.run();
+}
+endsnippet
+
+snippet cm4 "const mat4 reference"  i
+const mat4& ${1:name}
+endsnippet
+
+snippet cm3 "const mat3 reference"  i
+const mat3& ${1:name}
+endsnippet
+
+snippet cm2 "const mat2 reference"  i
+const mat2& ${1:name}
+endsnippet
+
+snippet cv4 "const vec4 reference"  i
+const vec4& ${1:name}
+endsnippet
+
+snippet cv3 "const vec3 reference"  i
+const vec3& ${1:name}
+endsnippet
+
+snippet cv2 "const vec2 reference"  i
+const vec2& ${1:name}
+endsnippet
+
+snippet xxxx "Description" b
+xxxxxxxxxx
+endsnippet

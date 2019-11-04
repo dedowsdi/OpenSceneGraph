@@ -152,7 +152,9 @@ int main( int argc, char **argv )
     viewer.setCameraManipulator(new osgGA::TrackballManipulator());
 
     // set the scene to render
-    viewer.setSceneData(loadedModel.get());
+    osg::Group* root = new osg::Group;
+    root->addChild(loadedModel);
+    viewer.setSceneData(root);
 
     // create the windows and run the threads.
     viewer.realize();
@@ -178,13 +180,15 @@ int main( int argc, char **argv )
             std::cout<<"Running osgUtil::Simplifier with SampleRatio="<<ratio<<" maxError="<<maxError<<" ...";
             std::cout.flush();
 
-            osg::ref_ptr<osg::Node> root = (osg::Node*)loadedModel->clone(osg::CopyOp::DEEP_COPY_ALL);
+            osg::ref_ptr<osg::Node> model = (osg::Node*)loadedModel->clone(osg::CopyOp::DEEP_COPY_ALL);
 
-            root->accept(simplifier);
+            model->accept(simplifier);
 
             std::cout<<"done"<<std::endl;
 
-            viewer.setSceneData(root.get());
+            root->removeChild(0, 1);
+            root->addChild(model);
+
             keyFlag = 0;
         }
     }

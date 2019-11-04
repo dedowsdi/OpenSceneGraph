@@ -32,6 +32,8 @@
 
 #include <osgViewer/Viewer>
 #include <osgViewer/ViewerEventHandlers>
+#include <osgGA/StateSetManipulator>
+#include <osg/PolygonMode>
 
 #include <iostream>
 
@@ -114,8 +116,10 @@ osg::Node* createModel(const std::string& shader, const std::string& textureFile
     geode->addDrawable(geom);
 
     // dimensions for ~one million triangles :-)
-    unsigned int num_x = 708;
-    unsigned int num_y = 708;
+    // unsigned int num_x = 708;
+    // unsigned int num_y = 708;
+    unsigned int num_x = 64;
+    unsigned int num_y = 64;
 
     // set up state
     {
@@ -137,6 +141,7 @@ osg::Node* createModel(const std::string& shader, const std::string& textureFile
             if (dynamic)
             {
                 coeff->setUpdateCallback(new UniformVarying);
+                // is it necessary to set data variance
                 coeff->setDataVariance(osg::Object::DYNAMIC);
                 stateset->setDataVariance(osg::Object::DYNAMIC);
             }
@@ -151,7 +156,7 @@ osg::Node* createModel(const std::string& shader, const std::string& textureFile
             stateset->addUniform(origin);
 
             osg::Uniform* coeffMatrix = new osg::Uniform("coeffMatrix",
-                osg::Matrix(1.0f,0.0f,1.0f,0.0f,
+                osg::Matrixf(1.0f,0.0f,1.0f,0.0f,
                             0.0f,0.0f,-1.0f,0.0f,
                             0.0f,1.0f,-1.0f,0.0f,
                             0.0f,0.0f,1.0f,0.0f));
@@ -309,6 +314,10 @@ int main(int argc, char *argv[])
     }
 
     viewer.setSceneData(model);
+
+    auto ssm =new osgGA::StateSetManipulator;
+    ssm->setStateSet(model->getOrCreateStateSet());
+    viewer.addEventHandler(ssm);
 
     return viewer.run();
 }

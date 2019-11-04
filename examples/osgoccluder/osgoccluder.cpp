@@ -251,6 +251,8 @@ osg::Group* createOccludersAroundModel(osg::Node* model)
     osg::BoundingBox bb;
     bb.expandBy(bs);
 
+    // TODO only front occluder works?
+
    // front
    scene->addChild(createOccluder(bb.corner(0),
                                   bb.corner(1),

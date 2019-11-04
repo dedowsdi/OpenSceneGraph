@@ -123,6 +123,10 @@ class OSG_EXPORT Transform : public Group
 
         ReferenceFrame getReferenceFrame() const { return _referenceFrame; }
 
+        // despite the name, this function is used to accumulate transformation
+        // by premult current matrix, CullVisitor call this function to get
+        // model view matrix.
+        // return true if matrix changed?
         virtual bool computeLocalToWorldMatrix(Matrix& matrix,NodeVisitor*) const
         {
             if (_referenceFrame==RELATIVE_RF)

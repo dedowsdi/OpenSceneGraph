@@ -23,6 +23,8 @@
 namespace osgAnimation
 {
 
+    // diffuse only. You must set channel name to diffuse if you wan to use
+    // this.
     class OSGANIMATION_EXPORT UpdateMaterial : public AnimationUpdateCallback<osg::StateAttributeCallback>
     {
     protected:

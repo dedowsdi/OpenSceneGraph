@@ -263,6 +263,7 @@ protected:
         {
             apply(geode.getStateSet());
 
+            // why not use traverse mode?
             for(unsigned int i=0;i<geode.getNumDrawables();++i)
             {
                 apply(geode.getDrawable(i)->getStateSet());

@@ -156,6 +156,7 @@ void ScalarBar::createDrawables()
     int i;
     for(i=1; i<=_numColors; ++i)
     {
+      // Why in cw order? and quad, why not use quad strip?
         vs->push_back(osg::Vec3((i-1) * xincr, 0.0f,     0.0f)*matrix);
         vs->push_back(osg::Vec3((i-1) * xincr, arOffset, 0.0f)*matrix);
         vs->push_back(osg::Vec3(i     * xincr, arOffset, 0.0f)*matrix);

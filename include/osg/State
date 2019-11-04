@@ -1026,11 +1026,11 @@ class OSG_EXPORT State : public Referenced
 
             void print(std::ostream& fout) const;
 
-            bool        valid;
-            bool        changed;
+            bool        valid;  // mode supported or not
+            bool        changed; // whether current mode is same as current graph (back of valueVec)
             bool        last_applied_value;
-            bool        global_default_value;
-            ValueVec    valueVec;
+            bool        global_default_value; // used when valueVec is empty
+            ValueVec    valueVec; // mode value stack
         };
 
         struct AttributeStack
@@ -1612,6 +1612,8 @@ inline void State::popModeList(ModeMap& modeMap,const StateSet::ModeList& modeLi
             ms.valueVec.pop_back();
         }
         ms.changed = true;
+        // it's not removed from modeMap even if ms.valueVec is empty after
+        // pop_back(), it use global_default_value in next apply.
     }
 }
 
@@ -1673,6 +1675,8 @@ inline void State::applyModeList(ModeMap& modeMap,const StateSet::ModeList& mode
     StateSet::ModeList::const_iterator ds_mitr = modeList.begin();
     ModeMap::iterator this_mitr=modeMap.begin();
 
+    // both ModeMap and StateSet::ModeList use StateAttribute::GLMode as key,
+    // their compare funciton is the same.
     while (this_mitr!=modeMap.end() && ds_mitr!=modeList.end())
     {
         if (this_mitr->first<ds_mitr->first)
@@ -1685,6 +1689,7 @@ inline void State::applyModeList(ModeMap& modeMap,const StateSet::ModeList& mode
                 ms.changed = false;
                 if (!ms.valueVec.empty())
                 {
+                    // apply mode of current state graph
                     bool new_value = ms.valueVec.back() & StateAttribute::ON;
                     applyMode(this_mitr->first,new_value,ms);
                 }
@@ -1703,14 +1708,12 @@ inline void State::applyModeList(ModeMap& modeMap,const StateSet::ModeList& mode
         else if (ds_mitr->first<this_mitr->first)
         {
 
-            // ds_mitr->first is a new mode, therefore
-            // need to insert a new mode entry for ds_mistr->first.
+            // insert new mode entry
             ModeStack& ms = modeMap[ds_mitr->first];
 
             bool new_value = ds_mitr->second & StateAttribute::ON;
             applyMode(ds_mitr->first,new_value,ms);
 
-            // will need to disable this mode on next apply so set it to changed.
             ms.changed = true;
 
             ++ds_mitr;
@@ -1729,6 +1732,8 @@ inline void State::applyModeList(ModeMap& modeMap,const StateSet::ModeList& mode
 
                 if (ms.changed)
                 {
+                    // it's override, so use current state graph mode, set
+                    // changed to false
                     ms.changed = false;
                     bool new_value = ms.valueVec.back() & StateAttribute::ON;
                     applyMode(this_mitr->first,new_value,ms);

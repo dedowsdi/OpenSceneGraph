@@ -115,6 +115,8 @@ class OSG_EXPORT TexGen : public TextureAttribute
         /** Set the tex gen planes from specified matrix.
           * Typical usage would be to pass in a projection
           * matrix to set up projective texturing.
+          *
+          * (s, t, r, q) = v * matrix
           */
         void setPlanesFromMatrix(const Matrixd& matrix);
 

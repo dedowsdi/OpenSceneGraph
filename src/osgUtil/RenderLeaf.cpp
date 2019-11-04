@@ -49,6 +49,19 @@ void RenderLeaf::render(osg::RenderInfo& renderInfo,RenderLeaf* previous)
         }
         else if (rg!=prev_rg)
         {
+            // rg is sibling of prev_rg, "current graph" doesn't change, no
+            // stateset push or pop happenes, state.apply() ensures that when
+            // you apply a sibling stateset, it works as if:
+            //   reverted mode, attribute to current graph first, then apply
+            //   mode, attribute of this new stateset (note that describe it in
+            //   two steps are just for easy to understand).
+            //
+            // The is done by  store a stack of stage graph modes and attribute,
+            // the back of it belongs to the current graph(note that current
+            // graph is always parent of this applying stateset), marking every
+            // mode or attribute that's different from current graph changed
+            // when you apply a stateset.
+
 
             // send state changes and matrix changes to OpenGL.
             state.apply(rg->getStateSet());

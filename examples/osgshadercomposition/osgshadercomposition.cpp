@@ -124,7 +124,7 @@ osg::Node* createNewShaderCompositionScene(osg::ArgumentParser& arguments)
     }
 
     {
-        // fourth subgraph, enable texturing and lighting
+        // fifth subgraph, enable texturing and lighting
         osg::PositionAttitudeTransform* pat = new osg::PositionAttitudeTransform;
         pat->setPosition(position);
         pat->getOrCreateStateSet()->setDefine("LIGHTING");

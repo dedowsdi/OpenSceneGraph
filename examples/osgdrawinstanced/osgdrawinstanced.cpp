@@ -45,6 +45,15 @@ createDAIGeometry( osg::Geometry& geom, int nInstances=1 )
     (*v)[ 2 ] = osg::Vec3( halfDimX, 0., halfDimZ );
     (*v)[ 3 ] = osg::Vec3( -halfDimX, 0., halfDimZ );
 
+    osg::Vec2Array* t = new osg::Vec2Array;
+    t->resize( 4 );
+    geom.setTexCoordArray( 0, t );
+
+    (*t)[ 0 ] = osg::Vec2( 0, 0 );
+    (*t)[ 1 ] = osg::Vec2( 1, 0 );
+    (*t)[ 2 ] = osg::Vec2( 1, 1 );
+    (*t)[ 3 ] = osg::Vec2( 0, 1 );
+
     // Use the DrawArraysInstanced PrimitiveSet and tell it to draw 1024 instances.
     geom.addPrimitiveSet( new osg::DrawArrays( GL_QUADS, 0, 4, nInstances ) );
 }
@@ -68,22 +77,23 @@ createStateSet()
         "{ \n"
             // Using the instance ID, generate "texture coords" for this instance.
             "vec2 tC; \n"
-            "float r = float(gl_InstanceID) / 32.; \n"
+            "float r = float(gl_InstanceIDARB) / 32.; \n"
             "tC.s = fract( r ); tC.t = floor( r ) / 32.; \n"
-            // Get the color from the OSG logo.
-            "gl_FrontColor = texture2D( osgLogo, tC ); \n"
-
             // Use the (scaled) tex coord to translate the position of the vertices.
             "vec4 pos = vec4( tC.s * 48., 0., tC.t * 48., 1. ); \n"
 
+            "tC += gl_MultiTexCoord0.xy / 32.0f; \n"
+            // Get the color from the OSG logo.
+            "gl_FrontColor = texture2D( osgLogo, tC ); \n"
+
             // Compute a rotation angle from the instanceID and elapsed time.
-            "float timeOffset = gl_InstanceID / (32. * 32.); \n"
+            "float timeOffset = gl_InstanceIDARB / (32. * 32.); \n"
             "float angle = ( osg_SimulationTime - timeOffset ) * 6.283; \n"
             "float sa = sin( angle ); \n"
             "float ca = cos( angle ); \n"
             // New orientation, rotate around z axis.
             "vec4 newX = vec4( ca, sa, 0., 0. ); \n"
-            "vec4 newY = vec4( sa, ca, 0., 0. ); \n"
+            "vec4 newY = vec4( -sa, ca, 0., 0. ); \n"
             "vec4 newZ = vec4( 0., 0., 1., 0. ); \n"
             "mat4 mV = mat4( newX, newY, newZ, pos ); \n"
             "gl_Position = ( gl_ModelViewProjectionMatrix * mV * gl_Vertex ); \n"

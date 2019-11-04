@@ -197,7 +197,10 @@ protected:
     template<typename T>
     void writeArrayImplementation( const T*, int write_size, unsigned int numInRow=1 );
 
+    // array has an unique Object ID and an unique Array ID ?
     unsigned int findOrCreateArrayID( const osg::Array* array, bool& newID );
+
+    // obj has an unique ID.
     unsigned int findOrCreateObjectID( const osg::Object* obj, bool& newID );
 
     ArrayMap _arrayMap;

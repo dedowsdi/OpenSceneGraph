@@ -586,6 +586,7 @@ protected:
 
         unsigned int                    _modifiedCount;
 
+        // index of this data in _bufferObject._bufferDataList
         unsigned int                    _bufferIndex;
         osg::ref_ptr<BufferObject>      _bufferObject;
         osg::ref_ptr<ModifiedCallback>  _modifiedCallback;

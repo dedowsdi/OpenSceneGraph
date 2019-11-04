@@ -22,6 +22,12 @@ namespace osg {
 /**
  * OccluderNode is a Group node which provides hooks for adding
  * ConvexPlanarOccluders to the scene.
+ *
+ * If a camera contains occluder node, a CollectOccludersVisitor will be used to
+ * collect ConverxPlanarOccluder during SceneView::cullStage.
+ * 
+ * occluder plane works independent of each other, a node is occluded if it's
+ * completely occluded by a single occluder plane?
  */
 class OSG_EXPORT OccluderNode : public Group
 {

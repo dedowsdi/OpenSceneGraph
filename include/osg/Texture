@@ -417,6 +417,8 @@ class TextureObjectManager;
 
 /** Texture pure virtual base class that encapsulates OpenGL texture
   * functionality common to the various types of OSG textures.
+  * 
+  * scale NPOT textures with gluScaleImage by default.
 */
 class OSG_EXPORT Texture : public osg::TextureAttribute
 {
