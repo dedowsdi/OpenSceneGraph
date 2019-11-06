@@ -20,6 +20,9 @@ ELSE(ANDROID)
 
 IF(DYNAMIC_OPENSCENEGRAPH)
 
+    # personal examples
+    ADD_SUBDIRECTORY(osgmodel)
+
     ADD_SUBDIRECTORY(osgsimpleMDI)
     ADD_SUBDIRECTORY(osg2cpp)
     ADD_SUBDIRECTORY(osganalysis)

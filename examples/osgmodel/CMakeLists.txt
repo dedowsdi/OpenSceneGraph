@@ -1,0 +1,3 @@
+SET(TARGET_SRC osgmodel.cpp )
+SET(TARGET_ADDED_LIBRARIES osgFX osgGA )
+SETUP_EXAMPLE(osgmodel)
