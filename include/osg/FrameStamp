@@ -64,7 +64,9 @@ class OSG_EXPORT FrameStamp : public Referenced
         // the network.
 
         unsigned int    _frameNumber;
+        // start from program program startup
         double          _referenceTime;
+        // same as _referenceTime by default.
         double          _simulationTime;
 
         // member variables of time.h's tm structure, copied here to
