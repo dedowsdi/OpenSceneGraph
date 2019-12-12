@@ -7,3 +7,7 @@ let g:mycpp_build_dir = './build/gcc/Debug'
 let g:cdef_proj_name = 'osg'
 let g:external_files = ['/usr/local/source/OpenSceneGraph-Data']
 command! -nargs=* RunFile exe printf(':CppMakeRun example_%s <args>', expand('%:t:r'))
+let g:ctags_cpp_macros = [
+        \ "META_Object(library,name)=",
+        \ "META_ValueObject(value, valueObject)=",
+        \ ]
