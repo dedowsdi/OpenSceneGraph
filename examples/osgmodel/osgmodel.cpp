@@ -11,7 +11,6 @@ osg::ref_ptr<osg::Group> root;
 namespace
 {
 
-<<<<<<< HEAD
 const char* normVsSource = "#version 120                                      \n"
                        "#extension GL_EXT_geometry_shader4 : enable       \n"
                        "                                                  \n"
@@ -53,50 +52,6 @@ const char* normFsSource = "#version 120                                \n"
                        "{                                           \n"
                        "    gl_FragColor = color;                   \n"
                        "}                                           \n";
-=======
-const char* normVsSource =
-  "#version 120                                      \n"
-  "#extension GL_EXT_geometry_shader4 : enable       \n"
-  "                                                  \n"
-  "varying vec3 normal;                              \n"
-  "                                                  \n"
-  "void main(void)                                   \n"
-  "{                                                 \n"
-  "    normal = gl_NormalMatrix * gl_Normal;         \n"
-  "    gl_Position = gl_ModelViewMatrix * gl_Vertex; \n"
-  "}                                                 \n";
-
-const char* normGsSource = "#version 120                                 \n"
-                           "#extension GL_EXT_geometry_shader4 : enable  \n"
-                           "                                             \n"
-                           "varying in vec3 normal[];                    \n"
-                           "                                             \n"
-                           "uniform float lineSize;                      \n"
-                           "                                             \n"
-                           "void main(void)                              \n"
-                           "{                                            \n"
-                           "    // gl_in require 150                     \n"
-                           "    vec4 pos = gl_PositionIn[0];             \n"
-                           "    gl_Position = gl_ProjectionMatrix * pos; \n"
-                           "    EmitVertex();                            \n"
-                           "                                             \n"
-                           "    pos.xyz += normal[0] * lineSize;         \n"
-                           "    gl_Position = gl_ProjectionMatrix * pos; \n"
-                           "    EmitVertex();                            \n"
-                           "                                             \n"
-                           "    EndPrimitive();                          \n"
-                           "}                                            \n";
-
-const char* normFsSource = "#version 120                                \n"
-                           "#extension GL_EXT_geometry_shader4 : enable \n"
-                           "                                            \n"
-                           "uniform vec4 color;                         \n"
-                           "                                            \n"
-                           "void main(void)                             \n"
-                           "{                                           \n"
-                           "    gl_FragColor = color;                   \n"
-                           "}                                           \n";
->>>>>>> Add osgmodel to examples.
 }
 
 class ModelEventHandler : public osgGA::GUIEventHandler

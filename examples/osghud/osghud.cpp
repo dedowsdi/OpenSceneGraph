@@ -37,7 +37,7 @@
 
 #include <osgText/Text>
 
-
+// create hud camera, text, text background rect.
 osg::Camera* createHUD()
 {
     // create a camera to set up the projection and model view matrices, and the subgraph to draw in the HUD
@@ -59,8 +59,6 @@ osg::Camera* createHUD()
     // we don't want the camera to grab event focus from the viewers main camera(s).
     camera->setAllowEventFocus(false);
 
-
-
     // add to this camera a subgraph to render
     {
 
@@ -73,79 +71,31 @@ osg::Camera* createHUD()
         stateset->setMode(GL_LIGHTING,osg::StateAttribute::OFF);
 
         osg::Vec3 position(150.0f,800.0f,0.0f);
-        osg::Vec3 delta(0.0f,-120.0f,0.0f);
 
-        {
-            osgText::Text* text = new  osgText::Text;
-            geode->addDrawable( text );
+        const char* desc =
+            "Head Up Displays are simple :-)\n"
+            "\n"
+            "All you need to do is create your text in a subgraph.\n"
+            "\n"
+            "Then place an osg::Camera above the subgraph\n"
+            "to create an orthographic projection.\n"
+            "\n"
+            "Set the Camera's ReferenceFrame to ABSOLUTE_RF to ensure\n"
+            "it remains independent from any external model view\n"
+            "matrices.\n"
+            "\n"
+            "And set the Camera's clear mask to just clear the depth\n"
+            "buffer.\n"
+            "\n"
+            "And finally set the Camera's RenderOrder to POST_RENDER\n"
+            "to make sure it's drawn last.";
 
-            text->setFont(timesFont);
-            text->setPosition(position);
-            text->setText("Head Up Displays are simple :-)");
+        osgText::Text* text = new osgText::Text;
+        text->setFont(timesFont);
+        text->setPosition(position);
+        text->setText(desc);
 
-            position += delta;
-        }
-
-
-        {
-            osgText::Text* text = new  osgText::Text;
-            geode->addDrawable( text );
-
-            text->setFont(timesFont);
-            text->setPosition(position);
-            text->setText("All you need to do is create your text in a subgraph.");
-
-            position += delta;
-        }
-
-
-        {
-            osgText::Text* text = new  osgText::Text;
-            geode->addDrawable( text );
-
-            text->setFont(timesFont);
-            text->setPosition(position);
-            text->setText("Then place an osg::Camera above the subgraph\n"
-                          "to create an orthographic projection.\n");
-
-            position += delta;
-        }
-
-        {
-            osgText::Text* text = new  osgText::Text;
-            geode->addDrawable( text );
-
-            text->setFont(timesFont);
-            text->setPosition(position);
-            text->setText("Set the Camera's ReferenceFrame to ABSOLUTE_RF to ensure\n"
-                          "it remains independent from any external model view matrices.");
-
-            position += delta;
-        }
-
-        {
-            osgText::Text* text = new  osgText::Text;
-            geode->addDrawable( text );
-
-            text->setFont(timesFont);
-            text->setPosition(position);
-            text->setText("And set the Camera's clear mask to just clear the depth buffer.");
-
-            position += delta;
-        }
-
-        {
-            osgText::Text* text = new  osgText::Text;
-            geode->addDrawable( text );
-
-            text->setFont(timesFont);
-            text->setPosition(position);
-            text->setText("And finally set the Camera's RenderOrder to POST_RENDER\n"
-                          "to make sure it's drawn last.");
-
-            position += delta;
-        }
-
+        geode->addDrawable(text);
 
         {
             osg::BoundingBox bb;
@@ -227,8 +177,6 @@ struct SnapImage : public osg::Camera::DrawCallback
     mutable osg::ref_ptr<osg::Image>    _image;
 };
 
-
-
 struct SnapeImageHandler : public osgGA::GUIEventHandler
 {
 
@@ -299,6 +247,8 @@ int main( int argc, char **argv )
 
     if (arguments.read("--Viewer"))
     {
+                           // add hudcamera to viewer
+
         // construct the viewer.
         osgViewer::Viewer viewer;
 
@@ -327,6 +277,8 @@ int main( int argc, char **argv )
     }
     if (arguments.read("--CompositeViewer"))
     {
+                           // add hudcamera to composite viewer
+
         // construct the viewer.
         osgViewer::CompositeViewer viewer;
 
