@@ -30,7 +30,10 @@ struct AttributeDispatch : public osg::Referenced
     virtual void operator() (unsigned int) {};
 };
 
-/** Helper class for managing the dispatch to OpenGL of various attribute arrays such as stored in osg::Geometry.*/
+// Helper class for managing the dispatch to OpenGL of various attribute arrays
+// such as stored in osg::Geometry It's mainly used to set up generic vertex
+// attribute by calling glColor3f if glColorPointer is used, or osg::Referenced
+// glVertexAttrib otherwise.
 class OSG_EXPORT AttributeDispatchers : public osg::Referenced
 {
     public:

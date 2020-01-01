@@ -34,6 +34,7 @@ inline void GL_APIENTRY glNormal3fv(const GLfloat* n) { glNormal3f(n[0], n[1], n
 inline void GL_APIENTRY glNormal3dv(const GLdouble* n) { glNormal3f(n[0], n[1], n[3]); }
 #endif
 
+// used when vertex func is used. e.g. call glColor3f
 template<typename T>
 class TemplateAttributeDispatch : public AttributeDispatch
 {
@@ -60,6 +61,7 @@ class TemplateAttributeDispatch : public AttributeDispatch
 };
 
 
+// used when vertex func is not used. e.g. call glVertexAttribute
 template<typename I, typename T>
 class TemplateTargetAttributeDispatch : public AttributeDispatch
 {
@@ -81,7 +83,7 @@ class TemplateTargetAttributeDispatch : public AttributeDispatch
         }
 
         F                       _functionPtr;
-        I                       _target;
+        I                       _target; // attribute location.
         unsigned int            _stride;
         const T*                _array;
 };

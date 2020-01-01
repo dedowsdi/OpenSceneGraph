@@ -280,7 +280,7 @@ osg::Node* createSkyBox()
     stateset->setAttributeAndModes(depth, osg::StateAttribute::ON );
 
     // render at first
-    stateset->setRenderBinDetails(5,"RenderBin");
+    stateset->setRenderBinDetails(-1,"RenderBin");
 
     osg::Drawable* drawable = new osg::ShapeDrawable(new osg::Sphere(osg::Vec3(0.0f,0.0f,0.0f),1));
 
@@ -295,7 +295,7 @@ osg::Node* createSkyBox()
     transform->addChild(geode);
 
     osg::ClearNode* clearNode = new osg::ClearNode;
-    clearNode->setRequiresClear(false);
+    // clearNode->setRequiresClear(false);
     // This skybox use NORMAL_MAP texgen, normal in view space doesn't rotate
     // with camera, you must apply text mat to rotate it, why not just object
     // plane ?
