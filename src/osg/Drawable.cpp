@@ -280,6 +280,8 @@ Drawable::~Drawable()
     }
 }
 
+// TODO why override this functions? Can't see the difference between this and
+// Node::getWorldMatrices.
 osg::MatrixList Drawable::getWorldMatrices(const osg::Node* haltTraversalAtNode) const
 {
     osg::MatrixList matrices;

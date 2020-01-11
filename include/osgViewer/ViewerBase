@@ -77,10 +77,10 @@ class OSGVIEWER_EXPORT ViewerBase : public virtual osg::Object
         enum ThreadingModel
         {
             SingleThreaded,
-            CullDrawThreadPerContext,
+            CullDrawThreadPerContext, // main does event, update, cull-draw pair does cull, draw per context
             ThreadPerContext = CullDrawThreadPerContext,
-            DrawThreadPerContext,
-            CullThreadPerCameraDrawThreadPerContext,
+            DrawThreadPerContext, // draw thread does draw per context, main does others
+            CullThreadPerCameraDrawThreadPerContext, // main does event, update
             ThreadPerCamera = CullThreadPerCameraDrawThreadPerContext,
             AutomaticSelection
         };

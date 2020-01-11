@@ -295,19 +295,28 @@ void osgParticle::ParticleSystem::drawImplementation(osg::RenderInfo& renderInfo
 
         if (_alignment==BILLBOARD)
         {
+            // there might be scale in modelview, this part is used to scale
+            // align_X_axis to cancel it.
             xAxis = osg::Matrix::transform3x3(modelview,_align_X_axis);
             yAxis = osg::Matrix::transform3x3(modelview,_align_Y_axis);
 
             float lengthX2 = xAxis.length2();
             float lengthY2 = yAxis.length2();
 
+            // scaled_aligned_xAxis will be transformed back by
+            // postmult(modelview, ..) to get local xAxis, local xAxis will be
+            // multiplied by modelview again in the fixed pipeline, so you need
+            // square to cancel it.
             if (_particleScaleReferenceFrame==LOCAL_COORDINATES)
             {
+
+                // keep scale
                 xScale = 1.0f/sqrtf(lengthX2);
                 yScale = 1.0f/sqrtf(lengthY2);
             }
             else
             {
+                // TODO why use length2 for world?
                 xScale = 1.0f/lengthX2;
                 yScale = 1.0f/lengthY2;
             }
@@ -343,7 +352,11 @@ void osgParticle::ParticleSystem::drawImplementation(osg::RenderInfo& renderInfo
 
                     if (_alignment==BILLBOARD)
                     {
+                        // TODO why use post multiply for R, looks like a bug.
                         xAxis = osg::Matrix::transform3x3(R,scaled_aligned_xAxis);
+
+                        // transform back to local, note that scale of modelview
+                        // is applied for 1st time here
                         xAxis = osg::Matrix::transform3x3(modelview,xAxis);
 
                         yAxis = osg::Matrix::transform3x3(R,scaled_aligned_yAxis);
@@ -351,6 +364,7 @@ void osgParticle::ParticleSystem::drawImplementation(osg::RenderInfo& renderInfo
                     }
                     else
                     {
+                        // should it be osg::Matrix::transform3x3(scaled_aligned_xAxis,R);
                         xAxis = osg::Matrix::transform3x3(R, scaled_aligned_xAxis);
                         yAxis = osg::Matrix::transform3x3(R, scaled_aligned_yAxis);
                     }
@@ -394,6 +408,10 @@ void osgParticle::ParticleSystem::drawImplementation(osg::RenderInfo& renderInfo
                     case osgParticle::Particle::HEXAGON:
                     case osgParticle::Particle::QUAD:
                     {
+
+                        // note that these vertices will be transformed by
+                        // modelview in the pipeline, scale is applied again
+                        // there.
                         osg::Vec3 c0(xpos-p1-p2);
                         osg::Vec2 t0(s_coord, t_coord);
                         osg::Vec3 c1(xpos+p1-p2);

@@ -106,7 +106,7 @@ namespace osgFX
              * post-draw
              * - only draw where draw didn't set the stencil buffer
              * - draw only back-facing polygons
-             * - draw back-facing polys as lines
+             * - draw back-facing polys as lines. TODO why use back-facing polys?
              * - disable depth-test, lighting & texture
              */
             {
@@ -127,7 +127,7 @@ namespace osgFX
 
                 // draw back-facing polygon lines
                 osg::PolygonMode* polyMode = new osg::PolygonMode;
-                polyMode->setMode(osg::PolygonMode::BACK, osg::PolygonMode::LINE);
+                polyMode->setMode(osg::PolygonMode::FRONT_AND_BACK, osg::PolygonMode::LINE);
                 state->setAttributeAndModes(polyMode, Override_On);
 
                 // outline width

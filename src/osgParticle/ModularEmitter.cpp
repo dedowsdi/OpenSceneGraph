@@ -29,6 +29,7 @@ void osgParticle::ModularEmitter::emitParticles(double dt)
     osg::MatrixList worldMats = getParticleSystem()->getWorldMatrices();
     if (!worldMats.empty())
     {
+        // careful here, only the 1st one counts.
         const osg::Matrix psToWorld = worldMats[0];
         worldToPs = osg::Matrix::inverse(psToWorld);
     }
