@@ -1,27 +1,48 @@
 #include "GaussianBlur.h"
 
 #include <cassert>
-#include <sstream>
 #include <iterator>
 
 #include <osgDB/ReadFile>
 #include <osg/Geometry>
 #include <osg/Texture2D>
+#include <osg/FrameBufferObject>
 
 namespace galaxy
 {
 
+class GaussianBlurTechnique : public osgFX::Technique
+{
+
+public:
+    GaussianBlurTechnique();
+
+    void define_passes() override;
+
+    osg::Node* getOverrideChild(int) override;
+
+    GaussianBlur* getEffect() const { return _effect; }
+    void setEffect( GaussianBlur* v ) { _effect = v; }
+
+private:
+    GaussianBlur* _effect = 0;
+};
+
 GaussianBlur::GaussianBlur(
     osg::Texture2D* input, osg::Texture2D* output, int times )
 {
-    _leaf = new osg::Geode;
+    setName( effectName() );
 
-    _quad = osg::createTexturedQuadGeometry(
+    _quad = new osg::Geode;
+    _quad->setCullingActive( false );
+
+    _quadGeom = osg::createTexturedQuadGeometry(
         osg::Vec3( -1, -1, 0 ), osg::Vec3( 2, 0, 0 ), osg::Vec3( 0, 2, 0 ) );
-    _quad->setName( "quad" );
-    _quad->setUseDisplayList( false );
-    _quad->setUseVertexBufferObjects( true );
-    _leaf->addDrawable( _quad );
+    _quad->addDrawable( _quadGeom );
+    _quadGeom->setName( "GaussianBlurQuad" );
+    _quadGeom->setUseDisplayList( false );
+    _quadGeom->setUseVertexBufferObjects( true );
+    _quadGeom->setCullingActive( false );
 
     _program = new osg::Program;
     _program->setName( "GaussianBlur" );
@@ -32,73 +53,12 @@ GaussianBlur::GaussianBlur(
     _program->addShader( vertShader );
     _program->addShader( fragShader );
 
-    // mean = 0, standard deviation = 2, gaussian_step = 1, step = 5
-    setWeights( {0.204164, 0.180174, 0.123832, 0.0662822, 0.0276306} );
-
     auto ss = getOrCreateStateSet();
     ss->setAttributeAndModes( _program );
     ss->addUniform( new osg::Uniform( "quad_map", 0 ) );
+    ss->setMode( GL_DEPTH_TEST, osg::StateAttribute::OFF );
 
-    setup( input, output, times );
-}
-
-void GaussianBlur::setup(
-    osg::Texture2D* input, osg::Texture2D* output, int times )
-{
-    _times = times;
-    _input = input;
-    _output = output;
-
-    if ( !output || output->getInternalFormat() == 0 ||
-         output->getTextureWidth() == 0 || output->getTextureHeight() == 0 )
-    {
-        OSG_WARN << __func__ << " : invalid output " << std::endl;
-        return;
-    }
-
-    if ( _input == _output )
-    {
-        OSG_WARN
-            << __func__
-            << " : you can't use the same Texture2D for both input and output"
-            << std::endl;
-        return;
-    }
-
-    // RenderStage set texture size to viewport size for 0 sized texture
-    _pong = new osg::Texture2D;
-    _pong->setInternalFormat( _output->getInternalFormat() );
-
-    auto ustep = 1.0f / output->getTextureWidth();
-    auto vstep = 1.0f / output->getTextureHeight();
-
-    _inputStateSet = createCameraStateSet( osg::Vec2( ustep, 0 ), _input );
-    _pingStateSet = createCameraStateSet( osg::Vec2( ustep, 0 ), _output );
-    _pongStateSet = createCameraStateSet( osg::Vec2( 0, vstep ), _pong );
-
-    removeChild( 0, getNumChildren() );
-
-    //  CullVisitor reset RenderStage the for cached RenderStage in Pre or Post
-    //  render camera, you also can't render the same RenderStage twice,
-    //  RenderStage::_stageDrawnThisFrame won't let you do that, so I have to
-    //  use one camera for one post processing.
-    for ( auto i = 0; i < times * 2; ++i )
-    {
-        auto camera = new osg::Camera;
-        camera->setStateSet( i == 0
-                                 ? _inputStateSet
-                                 : i % 2 == 0 ? _pingStateSet : _pongStateSet );
-        camera->setRenderTargetImplementation(
-            osg::Camera::FRAME_BUFFER_OBJECT );
-        camera->setRenderOrder( osg::Camera::PRE_RENDER );
-        camera->setClearMask( 0 );
-        camera->setViewport(
-            0, 0, _output->getTextureWidth(), _output->getTextureHeight() );
-        camera->attach(
-            osg::Camera::COLOR_BUFFER0, i % 2 == 0 ? _pong : _output );
-        camera->addChild( _leaf );
-        addChild( camera );
-    }
+    setup(input, output, times);
 }
 
 void GaussianBlur::setWeights( const std::vector<float>& v )
@@ -119,13 +79,94 @@ void GaussianBlur::setWeights( const std::vector<float>& v )
     ss->setDefine( "WEIGHTS", os.str() );
 }
 
-osg::StateSet* GaussianBlur::createCameraStateSet(
-    const osg::Vec2& step, osg::Texture* tex )
+void GaussianBlur::setup(
+    osg::Texture2D* input, osg::Texture2D* output, int times )
 {
-    auto ss = new osg::StateSet;
-    ss->addUniform( new osg::Uniform( "texture_step", step ) );
-    ss->setTextureAttributeAndModes( 0, tex );
-    return ss;
+    _times = times;
+    _input = input;
+    _output = output;
+
+    if ( !_input || !_output ) return;
+
+    if ( _input == _output )
+    {
+        OSG_WARN
+            << __FUNCTION__
+            << " : you can't use the same Texture2D for both input and output"
+            << std::endl;
+        return;
+    }
+
+    if (_output->getTextureWidth() == 0 || _output->getTextureHeight() == 0)
+    {
+        OSG_WARN << __FUNCTION__ << " : 0 sized output texture " << std::endl;
+        return;
+    }
+
+    _pong = new osg::Texture2D;
+    _pong->setInternalFormat( _output->getInternalFormat() );
+    _pong->setTextureSize(
+        output->getTextureWidth(), output->getTextureHeight() );
+
+    auto ss = getOrCreateStateSet();
+    ss->setAttributeAndModes( new osg::Viewport(
+        0, 0, output->getTextureWidth(), output->getTextureHeight() ) );
+
+    dirtyTechniques();
+}
+
+bool GaussianBlur::define_techniques()
+{
+    auto tech = new GaussianBlurTechnique();
+    tech->setEffect( this );
+    addTechnique( tech );
+    return true;
+}
+
+GaussianBlurTechnique::GaussianBlurTechnique() {}
+
+void GaussianBlurTechnique::define_passes()
+{
+    assert( _effect );
+
+    auto input = _effect->getInput();
+    auto ping = _effect->getOutput();
+    auto pong = _effect->getPong();
+    auto ustep = 1.0f / ping->getTextureWidth();
+    auto vstep = 1.0f / ping->getTextureHeight();
+
+    // create ping pong frame buffer object
+    auto fboPing =
+        osg::ref_ptr<osg::FrameBufferObject>( new osg::FrameBufferObject );
+    fboPing->setAttachment(
+        osg::Camera::COLOR_BUFFER0, osg::FrameBufferAttachment( pong, 0 ) );
+
+    auto fboPong =
+        osg::ref_ptr<osg::FrameBufferObject>( new osg::FrameBufferObject );
+    fboPong->setAttachment(
+        osg::Camera::COLOR_BUFFER0, osg::FrameBufferAttachment( ping, 0 ) );
+
+    // horizontal and vertical blur n times
+    for ( auto i = 0; i < _effect->getTimes() * 2; ++i )
+    {
+        // you can't reuse StateSet in Technique, everything you call addPass,
+        // it'ss RenderBin detail is changed.
+        auto ss = new osg::StateSet;
+        auto step = i % 2 == 0 ? osg::Vec2( ustep, 0 ) : osg::Vec2( 0, vstep );
+        auto inputMap = i == 0 ? input : i % 2 == 0 ? ping : pong;
+        auto fbo = i % 2 == 0 ? fboPing : fboPong;
+
+        ss->addUniform( new osg::Uniform( "texture_step", step ) );
+        ss->setTextureAttributeAndModes( 0,  inputMap);
+        ss->setAttributeAndModes(fbo);
+
+        addPass(ss);
+    }
+}
+
+osg::Node* GaussianBlurTechnique::getOverrideChild(int) 
+{
+    return getEffect()->getQuad();
 }
 
 } // namespace galaxy

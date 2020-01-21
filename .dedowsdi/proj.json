@@ -1,3 +1,1337 @@
 {
-  "example_osgshadercomposition": { "exe_args" : "cow.osgt" }
+  "OpenThreads": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgblendequation": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "osgdb_osgshadow": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "osgdb_tf": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgtessellationshaders": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgdistortion": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osganalysis": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "osgPresentation": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osganimate": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "osgUI": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osganimationviewer": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgbloom": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osganimationnode": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgtexture2DArray": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgkeyboard": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osglight": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "osgShadow": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "osgdb_dxf": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "osgdb_bmp": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgvertexattributes": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgfadetext": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "osgdb_serializers_osgterrain": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osggpx": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgoit": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "osgdb_logo": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgwidgetlabel": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgoscdevice": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgmultiviewpaging": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osguniformbuffer": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgpoints": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "list_install_components": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "osgdb_serializers_osgsim": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgtext": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgwidgetcanvas": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgscribe": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "osgdb_pic": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osghud": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "uninstall": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "osgdb_ac": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgwidgetbox": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgkeystone": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "osgdb_osc": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osggeometry": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "osgdb_osg": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgspacewarp": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "osgdb_serializers_osgtext": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "osgdb_serializers_osgmanipulator": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgwidgetnotebook": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgfxbrowser": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgbindlesstext": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "application_osgarchive": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osglogicop": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "osgManipulator": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "osgSim": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "osgdb_dot": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "osgdb_3dc": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgplanets": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "osgdb_normals": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgsequence": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgshaderterrain": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "osgParticle": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgfpdepth": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "all (the default if no target is provided)": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "osg": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgtransformfeedback": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgcompositeviewer": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "osgdb_gles": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "osgText": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "application_osgfilecache": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgdeferred": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osggpucull": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "osgdb_serializers_osgutil": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgcubemap": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgpick": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgterrain": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgmotionblur": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osg2cpp": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "application_osgviewer": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "install/strip": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgmodel": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgintersection": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgcallback": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgbillboard": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgshadergen": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgshape": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgscalarbar": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osguserstats": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgwindows": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgmemorytest": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "osgdb_cfg": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgmultitexture": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osganimationskinning": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgvertexprogram": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osghangglide": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgslice": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osglauncher": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgcopy": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osganimationmakepath": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "osgUtil": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osggraphicscost": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "osgVolume": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "osgdb_x": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "osgDB": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "osgdb_trans": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgSSBO": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgprerendercubemap": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "osgdb_serializers_osgfx": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "osgdb_osga": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgstereomatch": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "install": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgtexturerectangle": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgstereoimage": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgwidgetaddremove": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgautotransform": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgmultitouch": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osganimationeasemotion": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgshadow": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgparticleshader": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgshadermultiviewport": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "osgdb_ply": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgsimpleshaders": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "osgdb_serializers_osgga": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgpagedlod": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "osgdb_lua": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "osgdb_osgviewer": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "osgAnimation": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "osgdb_txp": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgcatch": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgoutline": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgwidgetwindow": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "osgdb_obj": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgdepthpartition": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgmultitexturecontrol": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgthreadedterrain": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "osgdb_serializers_osgshadow": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osguserdata": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgwidgetmenu": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgtexture3D": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "osgViewer": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "clobber": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "osgdb_ktx": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "osgdb_gz": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "osgdb_pvr": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgforest": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "osgdb_serializers_osgparticle": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgpointsprite": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgteapot": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "osgdb_jpeg": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgspotlight": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgtexture1D": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "application_osgconv": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "osgdb_scale": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgsampler": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osglightpoint": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "osgFX": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "osgdb_hdr": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgdatabaserevisions": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgtessellate": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgfont": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgscreencapture": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgshaders": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgwidgetframe": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "osgdb_freetype": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgvirtualprogram": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "osgdb_dds": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "osgdb_glsl": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "osgdb_png": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgparticleeffects": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "osgdb_osgtgz": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "osgdb_pnm": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgrobot": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgsimplegl3": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgreflect": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgwidgetstyled": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgprecipitation": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "osgdb_stl": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgoccluder": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgtexture2D": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "osgdb_rot": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgwidgettable": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgwidgetmessagebox": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "application_present3D": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "osgdb_osgjs": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgwidgetscrolled": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgsharedarray": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "osgdb_lwo": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "osgdb_lws": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "osgdb_ive": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgwidgetinput": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osggeometryshaders": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgphotoalbum": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgcluster": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "application_osgversion": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "osgdb_md2": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "osgdb_serializers_osganimation": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgsimpleMDI": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgkdtree": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osganimationmorph": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgprerender": {
+    "exe_args": "--fbo",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgvolume": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgsidebyside": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgparametric": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "osgdb_txf": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osggameoflife": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgblenddrawbuffers": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "osgdb_pov": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgdrawinstanced": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgclip": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "osgdb_mdl": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "osgdb_zip": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgpersistentbufferstorage": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgwidgetperformance": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgtexturecompression": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "osgdb_tga": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "osgdb_serializers_osgvolume": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgparticle": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "osgdb_revisions": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgthirdpersonview": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgcamera": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osganimationtimeline": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "osgdb_tgz": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "osgdb_p3d": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgspheresegment": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "osgdb_serializers_osg": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osglogo": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgcomputeshaders": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osganimationhardware": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgshaderpipeline": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "osgdb_serializers_osgui": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgocclusionquery": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgpackeddepthstencil": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "osgdb_rgb": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgmultiplemovies": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgshadercomposition": {
+    "exe_args": "cow.osgt",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgatomiccounter": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgsimplifier": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgdepthpeeling": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "osgdb_trk": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "osgdb_openflight": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgpdf": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "osgTerrain": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgunittests": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "install/local": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgtransferfunction": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "osgGA": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgmultiplerendertargets": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osganimationsolid": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgautocapture": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgwidgetshader": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "osgdb_shp": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgposter": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "osgdb_bsp": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "osgdb_serializers_osgviewer": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osglightning": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "osgdb_bvh": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgtext3D": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "osgdb_osgterrain": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgmanipulator": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgimpostor": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgobjectcache": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "osgdb_3ds": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgsimulation": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgimagesequence": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgmovie": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "osgdb_vtf": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "osgWidget": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  },
+  "example_osgkeyboardmouse": {
+    "exe_args": "",
+    "make_args": "-j 3",
+    "working_dir": ""
+  }
 }
